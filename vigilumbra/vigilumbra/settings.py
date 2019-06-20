@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import python-decouple
+import dj-database-url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^0)=rc@o^*5p0wmcbo=nj5x+9y82g21p9v28c_q9iv)6xl8b!('
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [.herokuapp.com]
 
 
 # Application definition
@@ -73,12 +75,10 @@ WSGI_APPLICATION = 'vigilumbra.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+DATABASES = 
+								{ 
+															'default': dj_database_url.config( default=config('DATABASE_URL') ) 
+									}
 
 
 # Password validation
@@ -114,7 +114,14 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+  
+# Static files (CSS, JavaScript, Images) 
+# https://docs.djangoproject.com/en/1.9/howto/static-files/ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles') 
+STATIC_URL = '/static/'  
 
-STATIC_URL = '/static/'
+# Extra places for collectstatic to find static files. STATICFILES_DIRS = (
+     os.path.join(PROJECT_ROOT, 'static'),
+ )
+ 
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

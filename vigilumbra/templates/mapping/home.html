@@ -13,18 +13,6 @@
       <script src="Leaflet.markercluster/src/MarkerCluster.js"></script>
     </head>
     <body>
-      <script type="text/javascript">
-         function map_init_basic (map, options) {
-               geojsonPointLayer.addTo(map);
-
-               var geojsonWorldLayer = new L.GeoJSON.AJAX("{% url 'world' %}", {
-                   onEachFeature:function(feature, layer) {
-                       layer.bindPopup(feature.properties.jpt_nazwa_field.toString())
-                   }
-               });
-               geojsonWorldLayer.addTo(map);
-           }
-      </script>
       {% leaflet_map "local" callback="window.map_init_basic" %}
    </body>
 </html>

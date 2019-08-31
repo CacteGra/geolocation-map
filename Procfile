@@ -1,1 +1,1 @@
-web: gunicorn vigilumbra/vigilumbra.wsgi --log-file -
+web: gunicorn vigilumbra.vigilumbra.wsgi --log-file -

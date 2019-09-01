@@ -10,7 +10,8 @@
       <script src="{% static 'leaflet-ajax/dist/leaflet.ajax.min.js' %}"></script>
       <link rel="stylesheet" href="Leaflet.markercluster/dist/MarkerCluster.css" />
       <link rel="stylesheet" href="Leaflet.markercluster/dist/MarkerCluster.Default.cs$
-      <script src="Leaflet.markercluster/src/MarkerCluster.js">
+      <script src="Leaflet.markercluster/src/MarkerCluster.js"></script>
+      <script>
           var map = L.map('local').fitWorld();
           L.tileLayer('https://api.tiles.mapbox.com/v4/MapID/997/256/{z}/{x}/{y}.png?access_token={accessToken}', {
               attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -27,7 +28,7 @@
               function onLocationError(e) { 
                   alert(e.message);
               } 
-     </script>
+        </script>
     </head>
     <body>
       {% leaflet_map "local" callback="window.map_init_basic" %}

@@ -8,10 +8,8 @@
         </style>
       {% leaflet_js %}
       {% leaflet_css %}
-      <script src="{% static 'leaflet-ajax/dist/leaflet.ajax.min.js' %}"></script>
       <link rel="stylesheet" href="Leaflet.markercluster/dist/MarkerCluster.css" />
-      <link rel="stylesheet" href="Leaflet.markercluster/dist/MarkerCluster.Default.cs$
-      <script src="Leaflet.markercluster/src/MarkerCluster.js"></script>
+      <link rel="stylesheet" href="Leaflet.markercluster/dist/MarkerCluster.Default.css"/>
       <script>
           function main_map_init (map, options) {
           L.tileLayer('https://api.tiles.mapbox.com/v4/MapID/997/256/{z}/{x}/{y}.png?access_token={accessToken}', {

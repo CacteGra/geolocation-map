@@ -16,7 +16,8 @@
                   attribution: '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
                   }).addTo(map);
               map.locate({setView: true, maxZoom: 15});
-              function onLocationFound(e) { 
+              function onLocationFound(e) {
+                  alert(e.latlng); 
                   var radius = e.accuracy; 
                   L.marker(e.latlng).addTo(map)
                   .bindPopup("You are within " + radius + " meters from this point").openPopup();

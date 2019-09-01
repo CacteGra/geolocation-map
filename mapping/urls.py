@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from mapping import views as mapping_views
+from mapping import MainPageView
 
 urlpatterns = [
     url(r'^$', MainPageView.as_view()),

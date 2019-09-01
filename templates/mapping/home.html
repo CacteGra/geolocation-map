@@ -2,6 +2,7 @@
     {% load leaflet_tags %}
     {% load static %}
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <style media="screen">
             #local { width:100%; height:100% }
         </style>
@@ -12,7 +13,10 @@
       <link rel="stylesheet" href="Leaflet.markercluster/dist/MarkerCluster.Default.cs$
       <script src="Leaflet.markercluster/src/MarkerCluster.js"></script>
       <script>
-          var map = L.map('local').fitWorld();
+          var map;
+          window.addEventListener("map:init", function (event) {
+              map = event.detail.map;
+          }, false);
           L.tileLayer('https://api.tiles.mapbox.com/v4/MapID/997/256/{z}/{x}/{y}.png?access_token={accessToken}', {
               attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
               maxZoom: 18

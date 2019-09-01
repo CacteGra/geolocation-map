@@ -15,9 +15,22 @@
               L.tileLayer('https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token={{ mapbox_key }}', {
                   attribution: '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
                   }).addTo(map);
-              map.setView([47.61264, -122.32109], 11);
               map.locate({setView: true, maxZoom: 15});
+              function onLocationFound(e) { 
+                  var radius = e.accuracy; 
+                  L.marker(e.latlng).addTo(map)
+                  .bindPopup("You are within " + radius + " meters from this point").openPopup();
+                  	L.circle(e.latlng, radius).addTo(map);
+                  }
+               map.on('locationfound', onLocationFound); 
+               function onLocationError(e) {
+                   alert(e.message); }
+               map.on('locationerror', onLocationError); 
+
+
+
               };
+
         </script>
     </head>
     <body>

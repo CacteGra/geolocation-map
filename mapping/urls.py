@@ -21,8 +21,6 @@ from django.conf.urls.static import static
 from mapping import views as mapping_views
 
 urlpatterns = [
-path(r'', mapping_views.home, name='home'),
-url(r'^points.data/', points_view, name='points'),
-url(r'^world.data/', world_view, name='world'),
+    url(r'^$', MainPageView.as_view()),
 
 ]
